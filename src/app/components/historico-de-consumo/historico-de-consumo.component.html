@@ -1,0 +1,62 @@
+<div class="container-historico">
+  <form [formGroup]="historico" class="mes" >
+    <div class="container-mes">
+      <label for="fornecimento">Sistema</label>
+      <select name="fornecimento" id="fornecimento" formControlName="fornecimento" (change)="defineFornecimento()">
+        <option value="30">Monofasíco</option>
+        <option value="50">Bifasíco</option>
+        <option value="100">Trifasíco</option>
+      </select>
+    </div>
+    <div class="container-mes">
+      <label for="jan">Janeiro</label>
+      <input  id="jan" type="number" formControlName="jan" (change)="calculaMedia()">
+    </div>
+    <div class="container-mes">
+      <label for="fev">Fevereiro</label>
+      <input id="fev" type="number" formControlName="fev" (change)="calculaMedia()">
+    </div>
+    <div class="container-mes">
+      <label for="mar">Março</label>
+      <input id="mar" type="number" formControlName="mar" (change)="calculaMedia()">
+    </div>
+    <div class="container-mes">
+      <label for="abr">Abril</label>
+      <input id="abr" type="number" formControlName="abr" (change)="calculaMedia()">
+    </div>
+    <div class="container-mes">
+      <label for="mai">Maio</label>
+      <input id="mai" type="number" formControlName="mai" (change)="calculaMedia()">
+    </div>
+    <div class="container-mes">
+      <label for="jun">Junho</label>
+      <input id="jun" type="number" formControlName="jun" (change)="calculaMedia()">
+    </div>
+    <div class="container-mes">
+      <label for="jul">Julho</label>
+      <input id="jul" type="number" formControlName="jul" (change)="calculaMedia()">
+    </div>
+    <div class="container-mes">
+      <label for="ago">Agosto</label>
+      <input id="ago" type="number" formControlName="ago" (change)="calculaMedia()">
+    </div>
+    <div class="container-mes">
+      <label for="set">Setembro</label>
+      <input id="set" type="number" formControlName="set" (change)="calculaMedia()">
+    </div>
+    <div class="container-mes">
+      <label for="out">Outubro</label>
+      <input id="out" type="number" formControlName="out" (change)="calculaMedia()">
+    </div>
+    <div class="container-mes">
+      <label for="nov">Novembro</label>
+      <input id="nov" type="number" formControlName="nov" (change)="calculaMedia()">
+    </div>
+    <div class="container-mes">
+      <label for="dez">Dezembro</label>
+      <input id="dez" type="number" formControlName="dez" (change)="calculaMedia()">
+    </div>
+
+  </form>
+  <div></div>
+</div>
