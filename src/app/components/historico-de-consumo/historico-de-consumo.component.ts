@@ -15,7 +15,7 @@ export class HistoricoDeConsumoComponent implements OnInit {
   @Output() consumoPorMes:any=[0,0,0,0,0,0,0,0,0,0,0,0];
 
   defineFornecimento(){
-    this.fornecimento = this.historico.value.fornecimento
+    this.fornecimento = parseInt(this.historico.value.fornecimento)
   }
   calculaMedia(){
     var soma = 0;
@@ -24,11 +24,17 @@ export class HistoricoDeConsumoComponent implements OnInit {
       soma = soma + this.historico.value.jan;
       contador += 1;
       this.consumoPorMes[0] = this.historico.value.jan
+      console.log('soma: '+soma)
     }
     if(this.historico.value.fev != null){
       soma = soma + this.historico.value.fev;
       contador += 1;
+      console.log('soma: '+soma)
+      console.log('fev antes: '+this.consumoPorMes[1])
       this.consumoPorMes[1] = this.historico.value.fev
+      console.log('value: '+this.historico.value.fev)
+      console.log('fev depois: '+this.consumoPorMes[1])
+      console.log('soma: '+soma)
     }
     if(this.historico.value.mar != null){
       soma = soma + this.historico.value.mar;
@@ -81,7 +87,7 @@ export class HistoricoDeConsumoComponent implements OnInit {
       this.consumoPorMes[11] = this.historico.value.dez
     }
     this.media =parseFloat((soma/contador).toFixed(2))
-    console.log(this.media)
+    console.log('media: '+this.media)
   }
   criaHistorico(formHistorico: FormHistorico){
   this.historico = new FormGroup({

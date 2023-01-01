@@ -1,7 +1,7 @@
 <app-header></app-header>
-<div class="dashboard">
-
-  <app-historico-de-consumo #fornecimento #media #consumoPorMes></app-historico-de-consumo >
-  <app-painel-consumo-medio [fornecimento]="fornecimento" [media]="media" [consumoPorMes]="consumoPorMes"></app-painel-consumo-medio>
+<div class=" row d-flex justify-content-center">
+  <app-historico-de-consumo class=" historico col-2" #fornecimento #media #consumoPorMes></app-historico-de-consumo >
+  <app-painel-consumo-medio class="col-9" [fornecimento]="fornecimento" [media]="media" [consumoPorMes]="consumoPorMes"></app-painel-consumo-medio>
 </div>
+<app-localizacao class="container"></app-localizacao>
 
