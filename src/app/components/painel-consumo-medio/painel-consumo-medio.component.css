@@ -3,9 +3,6 @@
   flex-direction: row;
   justify-content: space-between;
 }
-.descricao p{
-  text-align: justify;
-}
 .item{
   background-color: #09064F;
   display:flex;
@@ -23,6 +20,6 @@
   justify-content: space-between;
   flex-direction: column;
   border-radius: 5px;
-  padding: 65px;/*5px*/
+  padding: 5px;
   margin: 5px;
 }

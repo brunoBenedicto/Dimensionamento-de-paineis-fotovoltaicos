@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GraficoComponent } from './grafico.component';
+import { IrradianciaComponent } from './irradiancia.component';
 
-describe('GraficoComponent', () => {
-  let component: GraficoComponent;
-  let fixture: ComponentFixture<GraficoComponent>;
+describe('IrradianciaComponent', () => {
+  let component: IrradianciaComponent;
+  let fixture: ComponentFixture<IrradianciaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GraficoComponent ]
+      declarations: [ IrradianciaComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GraficoComponent);
+    fixture = TestBed.createComponent(IrradianciaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

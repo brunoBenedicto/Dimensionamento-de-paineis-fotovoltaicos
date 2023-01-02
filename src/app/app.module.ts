@@ -6,17 +6,17 @@ import { HeaderComponent } from './components/header/header.component';
 import { HistoricoDeConsumoComponent } from './components/historico-de-consumo/historico-de-consumo.component';
 import { PainelConsumoMedioComponent } from './components/painel-consumo-medio/painel-consumo-medio.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { GraficoComponent } from './components/painel-consumo-medio/grafico/grafico.component';
 import { LocalizacaoComponent } from './components/localizacao/localizacao.component';
 import { LocalizacaoService } from './components/localizacao/localizacao.service';
+import { IrradianciaComponent } from './components/irradiancia/irradiancia.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HistoricoDeConsumoComponent,
     PainelConsumoMedioComponent,
-    GraficoComponent,
-    LocalizacaoComponent
+    LocalizacaoComponent,
+    IrradianciaComponent
   ],
   imports: [
     BrowserModule,

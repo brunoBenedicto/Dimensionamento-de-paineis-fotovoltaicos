@@ -1,11 +1,9 @@
   <form [formGroup]="historico">
-
     <div class="input-group input-group-sm m-2 ">
       <div class="input-group-prepend">
         <label class="input-group-text" for="fornecimento">Sistema</label>
       </div>
       <select class="custom-select" id="fornecimento" formControlName="fornecimento" (change)="defineFornecimento()">
-        <option selected>...</option>
         <option value="30">Monofasíco</option>
         <option value="50">Bifasíco</option>
         <option value="100">Trifasíco</option>
