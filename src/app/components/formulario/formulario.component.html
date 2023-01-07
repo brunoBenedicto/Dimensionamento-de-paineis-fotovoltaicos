@@ -1,0 +1,26 @@
+<form [formGroup]="formulario">
+  <div class="form-group ">
+    <label for="cep">CEP:</label>
+    <input type="number" class="form-control form-control-sm" id="cep" type="number" formControlName="cep" placeholder="CEP">
+  </div>
+
+  <div class="form-group">
+    <label for="fornecimento">Sistema</label>
+    <select class="custom-select custom-select-sm" id="fornecimento" formControlName="fornecimento">
+      <option value="30">Monofasíco</option>
+      <option value="50">Bifasíco</option>
+      <option value="100">Trifasíco</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="consum">Consumo Medio</label>
+    <input type="number" class="form-control form-control-sm" id="consumo" type="number" formControlName="consumo" placeholder="Kw/h">
+  </div>
+  <div class="form-group">
+    <label for="potencia">Potencia do painel</label>
+    <input type="number" class="form-control form-control-sm" id="potencia" type="number" formControlName="potencia" placeholder="w">
+  </div>
+
+  <input type="button" class="btn btn-primary btn-block" value="Dimensionar" (click)="submeter()">
+</form>

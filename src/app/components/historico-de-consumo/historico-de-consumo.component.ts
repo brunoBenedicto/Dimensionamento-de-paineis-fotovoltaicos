@@ -11,10 +11,11 @@ import { Output } from '@angular/core';
 export class HistoricoDeConsumoComponent implements OnInit {
   historico: FormGroup
   @Output() fornecimento:number=0
-  @Output() media:number=0
-  @Output() consumoPorMes:any=[0,0,0,0,0,0,0,0,0,0,0,0];
+  @Output() consumoMedioAnual:number=0
+  consumoPorMes:any=[0,0,0,0,0,0,0,0,0,0,0,0];
 
   defineFornecimento(){
+    console.log(parseInt('defineFornecimento return: ' + this.historico.value.fornecimento))
     this.fornecimento = parseInt(this.historico.value.fornecimento)
   }
   calculaMedia(){
@@ -29,12 +30,7 @@ export class HistoricoDeConsumoComponent implements OnInit {
     if(this.historico.value.fev != null){
       soma = soma + this.historico.value.fev;
       contador += 1;
-      console.log('soma: '+soma)
-      console.log('fev antes: '+this.consumoPorMes[1])
       this.consumoPorMes[1] = this.historico.value.fev
-      console.log('value: '+this.historico.value.fev)
-      console.log('fev depois: '+this.consumoPorMes[1])
-      console.log('soma: '+soma)
     }
     if(this.historico.value.mar != null){
       soma = soma + this.historico.value.mar;
@@ -86,8 +82,8 @@ export class HistoricoDeConsumoComponent implements OnInit {
       contador += 1;
       this.consumoPorMes[11] = this.historico.value.dez
     }
-    this.media =parseFloat((soma/contador).toFixed(2))
-    console.log('media: '+this.media)
+    this.consumoMedioAnual =parseFloat((soma/contador).toFixed(2))
+    console.log('media: '+this.consumoMedioAnual)
   }
   criaHistorico(formHistorico: FormHistorico){
   this.historico = new FormGroup({

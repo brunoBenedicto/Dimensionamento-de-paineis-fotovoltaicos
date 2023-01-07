@@ -1,5 +1,5 @@
 
-  <div class="row">
+  <div class="row border rounded m-3">
     <div class="col-2 m-0 ">
       <div class="input-group input-group-sm input-block mb-2 mt-4 ml-2">
         <div class="input-group-prepend">
@@ -7,24 +7,23 @@
         </div>
         <input type="number" id="cep" class="form-control" #cep>
       </div>
-
-        <button type="button" class="btn btn-secondary btn-sm btn-block mb-4 ml-2" id="bntCep" value="Consultar" (click)="consultar(cep.value)">Consultar</button>
-
+      <button type="button" class="btn btn-secondary btn-sm btn-block mb-4 ml-2" id="bntCep" value="Consultar" (click)="consultarCEP(cep.value)">Consultar</button>
     </div>
-    <div class="col-9 container-cep m-2">
-      <div class="container">
+
+    <div class="col-9 m-2">
+      <div class="container col">
         <p>Endereço:</p>
-        <h4 class="mt-0s">{{endereco}}</h4>
+        <h4 class="m-3 p-3">{{endereco}}</h4>
       </div>
       <div class="container row">
         <div class="col">
-          <p>LATITUDE: {{latitude.toFixed(7)}}</p>
+          <p>LATITUDE: </p>
+          <h5>{{latitude.toFixed(7)}}</h5>
         </div>
         <div class="col">
-          <p>LONGITUDE: {{longitude.toFixed(7)}}</p>
+          <p>LONGITUDE:</p>
+          <h5>{{longitude.toFixed(7)}}</h5>
         </div>
-      </div>
-      <div class="container">
       </div>
     </div>
   </div>

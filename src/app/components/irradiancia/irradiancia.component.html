@@ -1,8 +1,9 @@
+<div>
 <p>Irradiação solar diária média mensal [kWh/m2.dia]</p>
 <table class="table table-secondary table-sm table-responsive-sm table-responsive-md">
   <thead>
     <tr>
-      <th scope="col">Media</th>
+      <th scope="col">Menor mes</th>
       <th scope="col">Jan</th>
       <th scope="col">Fev</th>
       <th scope="col">Mar</th>
@@ -19,19 +20,37 @@
   </thead>
   <tbody>
     <tr>
-      <th scope="row">media</th>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
-      <td>4</td>
-      <td>5</td>
-      <td>6</td>
-      <td>7</td>
-      <td>8</td>
-      <td>9</td>
-      <td>10</td>
-      <td>11</td>
-      <td>12</td>
+      <th scope="row">{{resultadoIrradiacao.MIN}}</th>
+      <td>{{resultadoIrradiacao.JAN}}</td>
+      <td>{{resultadoIrradiacao.FEB}}</td>
+      <td>{{resultadoIrradiacao.MAR}}</td>
+      <td>{{resultadoIrradiacao.APR}}</td>
+      <td>{{resultadoIrradiacao.MAY}}</td>
+      <td>{{resultadoIrradiacao.JUN}}</td>
+      <td>{{resultadoIrradiacao.JUL}}</td>
+      <td>{{resultadoIrradiacao.AUG}}</td>
+      <td>{{resultadoIrradiacao.SEP}}</td>
+      <td>{{resultadoIrradiacao.OCT}}</td>
+      <td>{{resultadoIrradiacao.NOV}}</td>
+      <td>{{resultadoIrradiacao.DEC}}</td>
+
     </tr>
   </tbody>
 </table>
+</div>
+<div class="row">
+  <div class="col-4 m-0 ">
+    <div class="input-group input-group-sm input-block mb-2 mt-4 ml-2">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Potencia</span>
+      </div>
+      <input type="number" id="potencia" class="form-control" #potencia>
+    </div>
+      <button type="button" class="btn btn-secondary btn-sm btn-block mb-4 ml-2" id="bntPotencia" (click)="consultarIrradicacao(latitude.latitude, longitude.longitude, potencia.value)">Consultar</button>
+  </div>
+  <div class="col-7">
+    <p>Quantidade de paineis</p>
+    <h3>{{quantidadeDePaineis}}</h3>
+  </div>
+</div>
+
