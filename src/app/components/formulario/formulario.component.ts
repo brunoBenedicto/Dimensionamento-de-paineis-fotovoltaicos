@@ -26,7 +26,7 @@ export class FormularioComponent implements OnInit {
 
   criarFormulario(modeloDeFormulario: ModeloDeFormulario){
     this.formulario = new FormGroup({
-      cep: new FormControl(modeloDeFormulario.cep),
+      endereco: new FormControl(modeloDeFormulario.endereco),
       fornecimento: new FormControl(modeloDeFormulario.fornecimento),
       consumo: new FormControl(modeloDeFormulario.consumo),
       potencia: new FormControl(modeloDeFormulario.potencia)
@@ -46,6 +46,23 @@ export class FormularioComponent implements OnInit {
       this.consultarIrradicacao(this.localizacao.results[0].geometry.location.lat, this.localizacao.results[0].geometry.location.lng)
     })
   }
+  consultarPorEndereco(endereco:string){
+    console.log('aqui')
+    this.localizacao = this.localizacaoService.consultarPorEndereco(endereco).subscribe(res =>{
+      console.log('res')
+      console.log(res);
+      this.localizacao = res;
+      this.localizacao.results[0].geometry = res.results[0].geometry
+      this.localizacao.status = res.status
+      this.latitude = this.localizacao.results[0].geometry.location.lat
+      this.longitude = this.localizacao.results[0].geometry.location.lng
+      this.logradouro = this.localizacao.results[0].formatted_address
+      this.consultarIrradicacao(this.localizacao.results[0].geometry.location.lat, this.localizacao.results[0].geometry.location.lng)
+    })
+    console.log('local')
+    console.log(this.localizacao)
+  }
+
   preencheConsumo(){
     this.consumoMedioAnual = this.formulario.value.consumo;
     this.consumoMedioMensal = this.formulario.value.consumo - this.formulario.value.fornecimento
@@ -82,7 +99,8 @@ export class FormularioComponent implements OnInit {
   }
   submeter(){
     this.preencheConsumo();
-    this.consultarCEP(this.formulario.value.cep);
+    console.log('submeter :' +this.formulario.value.endereco)
+    this.consultarPorEndereco(this.formulario.value.endereco);
   }
 
 
