@@ -8,7 +8,7 @@ export class IrradiacaoService {
   constructor(private http: HttpClient){}
   consultarIrradiacao(lat:number, lon:number){
     console.log("consutando com serv:" +lat)
-    const url = `http://localhost:3000/coordenadas?LON=${lon}&LAT=${lat}`
+    const url = `https://irradiacao-brasil.brunobenedicto.repl.co/coordenadas?LON=${lon}&LAT=${lat}`
     return this.http.get<any>(url)
   }
 

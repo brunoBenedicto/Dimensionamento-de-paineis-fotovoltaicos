@@ -11,6 +11,7 @@ import { IrradiacaoMediaDiariaComponent } from './components/painel/irradiacao-m
 import { LocalidadeComponent } from './components/painel/localidade/localidade.component';
 import { QuantidadeDePaineisComponent } from './components/painel/quantidade-de-paineis/quantidade-de-paineis.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
+import { FooterComponent } from './components/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import { FormularioComponent } from './components/formulario/formulario.componen
     IrradiacaoMediaDiariaComponent,
     LocalidadeComponent,
     QuantidadeDePaineisComponent,
-    FormularioComponent
+    FormularioComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
