@@ -28,4 +28,6 @@
 * irradiacao-brasil(bade de dados da labren)
 
 ## Tela
-![image](https://user-images.githubusercontent.com/28581183/210120874-338b5883-b6cf-4c5f-973b-046debb6c941.png)
+![tela1](https://user-images.githubusercontent.com/28581183/211692758-192f0003-0b2f-41ff-bc57-0015b3207b19.png)
+
+![tela2](https://user-images.githubusercontent.com/28581183/211692772-c1e13359-e02f-418a-8661-42e147a4495f.png)
