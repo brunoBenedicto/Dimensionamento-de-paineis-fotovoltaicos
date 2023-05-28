@@ -1,8 +1,8 @@
-import { IrradiacaoService } from './services/irradiacao.service';
 import { LocalizacaoService } from './services/localizacao-service.service';
-import { ModeloDeFormulario } from './model/modelo-de-formulario';
+import { ModeloDeFormulario,  } from './model/modelo-de-formulario';
 import { Component, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-formulario',
@@ -11,18 +11,15 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class FormularioComponent implements OnInit {
   formulario: FormGroup;
-  localizacao:any;
-  @Output() resultadoIrradiacao:any;
+  @Output() model_Irradiacao: any;
   @Output() minimo: number;
   @Output() quantidadeDePaineis: number
   @Output() consumoMedioAnual: number;
   @Output() consumoMedioMensal: number;
   @Output() consumoMedioDiario: number;
-  @Output() logradouro: string;
-  @Output() latitude: number;
-  @Output() longitude: number;
 
-  constructor(private localizacaoService: LocalizacaoService, private irradiacao: IrradiacaoService) { }
+
+  constructor(private localizacaoService: LocalizacaoService) { }
 
   criarFormulario(modeloDeFormulario: ModeloDeFormulario){
     this.formulario = new FormGroup({
@@ -35,32 +32,35 @@ export class FormularioComponent implements OnInit {
   ngOnInit(): void {
     this.criarFormulario(new ModeloDeFormulario())
   }
-  consultarCEP(cep:number){
-    this.localizacao = this.localizacaoService.consultarCEP(cep).subscribe(res =>{
-      this.localizacao = res;
-      this.localizacao.results[0].geometry = res.results[0].geometry
-      this.localizacao.status = res.status
-      this.latitude = this.localizacao.results[0].geometry.location.lat
-      this.longitude = this.localizacao.results[0].geometry.location.lng
-      this.logradouro = this.localizacao.results[0].formatted_address
-      this.consultarIrradicacao(this.localizacao.results[0].geometry.location.lat, this.localizacao.results[0].geometry.location.lng)
-    })
-  }
+
   consultarPorEndereco(endereco:string){
-    console.log('aqui')
-    this.localizacao = this.localizacaoService.consultarPorEndereco(endereco).subscribe(res =>{
-      console.log('res')
-      console.log(res);
-      this.localizacao = res;
-      this.localizacao.results[0].geometry = res.results[0].geometry
-      this.localizacao.status = res.status
-      this.latitude = this.localizacao.results[0].geometry.location.lat
-      this.longitude = this.localizacao.results[0].geometry.location.lng
-      this.logradouro = this.localizacao.results[0].formatted_address
-      this.consultarIrradicacao(this.localizacao.results[0].geometry.location.lat, this.localizacao.results[0].geometry.location.lng)
+    console.log("consultarPorEndereco()");
+    console.log(this.model_Irradiacao)
+    this.localizacaoService.consultarPorEndereco(endereco).subscribe(res =>{
+    this.model_Irradiacao = res;
+    this.model_Irradiacao.ID =res.ID;
+    this.model_Irradiacao.COUNTRY =res.COUNTRY;
+    this.model_Irradiacao.LON =res.LON;
+    this.model_Irradiacao.LAT =res.LAT;
+    this.model_Irradiacao.ANNUAL =res.ANNUAL;
+    this.model_Irradiacao.JAN =res.JAN;
+    this.model_Irradiacao.FEB =res.FEB;
+    this.model_Irradiacao.MAR =res.MAR;
+    this.model_Irradiacao.APR =res.APR;
+    this.model_Irradiacao.MAY =res.MAY;
+    this.model_Irradiacao.JUN =res.JUN;
+    this.model_Irradiacao.JUL =res.JUL;
+    this.model_Irradiacao.AUG =res.AUG;
+    this.model_Irradiacao.SEP =res.SEP;
+    this.model_Irradiacao.OCT =res.OCT;
+    this.model_Irradiacao.NOV =res.NOV;
+    this.model_Irradiacao.DEC =res.DEC;
+    this.minimo =Math.min( res.JAN, res.FEB, res.MAR, res.APR, res.MAY, res.JUN, res.JUL, res.AUG, res.SEP, res.OCT, res.NOV, res.DEC);
+    this.definePaineis(Math.min( res.JAN, res.FEB, res.MAR, res.APR, res.MAY, res.JUN, res.JUL, res.AUG, res.SEP, res.OCT, res.NOV, res.DEC));
+    console.log(this.model_Irradiacao);
+    console.log("fim consultarPorEndereco()")
     })
-    console.log('local')
-    console.log(this.localizacao)
+
   }
 
   preencheConsumo(){
@@ -68,39 +68,17 @@ export class FormularioComponent implements OnInit {
     this.consumoMedioMensal = this.formulario.value.consumo - this.formulario.value.fornecimento
     this.consumoMedioDiario = parseFloat(((this.formulario.value.consumo - this.formulario.value.fornecimento)/30).toFixed(2))
   }
-  consultarIrradicacao(lat:number, lon:number){
-    console.log("consutando com ts:" +lat);
-    this.resultadoIrradiacao = this.irradiacao.consultarIrradiacao(lat, lon).subscribe(res =>{
-    this.resultadoIrradiacao = res;
-    this.resultadoIrradiacao.ID =res.ID;
-    this.resultadoIrradiacao.COUNTRY =res.COUNTRY;
-    this.resultadoIrradiacao.LON =res.LON;
-    this.resultadoIrradiacao.LAT =res.LAT;
-    this.resultadoIrradiacao.ANNUAL =res.ANNUAL;
-    this.resultadoIrradiacao.JAN =res.JAN;
-    this.resultadoIrradiacao.FEB =res.FEB;
-    this.resultadoIrradiacao.MAR =res.MAR;
-    this.resultadoIrradiacao.APR =res.APR;
-    this.resultadoIrradiacao.MAY =res.MAY;
-    this.resultadoIrradiacao.JUN =res.JUN;
-    this.resultadoIrradiacao.JUL =res.JUL;
-    this.resultadoIrradiacao.AUG =res.AUG;
-    this.resultadoIrradiacao.SEP =res.SEP;
-    this.resultadoIrradiacao.OCT =res.OCT;
-    this.resultadoIrradiacao.NOV =res.NOV;
-    this.resultadoIrradiacao.DEC =res.DEC;
-    this.minimo =Math.min( res.JAN, res.FEB, res.MAR, res.APR, res.MAY, res.JUN, res.JUL, res.AUG, res.SEP, res.OCT, res.NOV, res.DEC);
-    this.definePaineis(Math.min( res.JAN, res.FEB, res.MAR, res.APR, res.MAY, res.JUN, res.JUL, res.AUG, res.SEP, res.OCT, res.NOV, res.DEC))
-    })
-  }
 
   definePaineis(minimo:number ){
+    console.log("definePaineis()")
     this.quantidadeDePaineis = Math.ceil((((this.consumoMedioDiario)/(minimo/1000))*1000)/this.formulario.value.potencia);
   }
   submeter(){
+    const endereco = this.formulario.value.endereco
     this.preencheConsumo();
-    console.log('submeter :' +this.formulario.value.endereco)
-    this.consultarPorEndereco(this.formulario.value.endereco);
+    console.log('submeter :' + endereco)
+    this.consultarPorEndereco(endereco);
+    console.log("model_Irradiacao: "+this.model_Irradiacao)
   }
 
 

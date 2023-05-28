@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-localidade',
@@ -7,13 +7,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class LocalidadeComponent implements OnInit {
 
-  @Input() logradouro: any
-  @Input() latitude: any
-  @Input() longitude: any
+  @Input() dadosLocal: any;
+
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log("init"+this.dadosLocal)
   }
+
 
 }

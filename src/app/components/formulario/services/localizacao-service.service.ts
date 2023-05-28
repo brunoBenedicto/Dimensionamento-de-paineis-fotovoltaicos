@@ -13,9 +13,9 @@ export class LocalizacaoService {
   }
 
   consultarPorEndereco(endereco:string){
-    endereco = endereco.replace(/ /gi, "%20")
+    endereco = endereco.replace(/ /gi, "+")
     console.log(endereco)
-    const url = `https://maps.googleapis.com/maps/api/geocode/json?components=locality:${endereco}&key=AIzaSyAyk3pPRorgn0YQMQUcCTWlVtt3N1hLWIA`
+    const url = `https://irradiacao-brasil.brunobenedicto.repl.co/coordenadas?endereco=${endereco}`
     console.log(this.http.get<any>(url))
     return this.http.get<any>(url)
   }

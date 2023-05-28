@@ -1,4 +1,3 @@
-import { IrradiacaoService } from './components/formulario/services/irradiacao.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from "@angular/common/http"
@@ -31,7 +30,6 @@ import { FooterComponent } from './components/footer/footer.component';
   providers: [
     HttpClientModule,
     LocalizacaoService,
-    IrradiacaoService
   ],
   bootstrap: [AppComponent]
 })

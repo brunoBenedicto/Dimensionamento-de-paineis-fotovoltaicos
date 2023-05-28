@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./irradiacao-media-diaria.component.css']
 })
 export class IrradiacaoMediaDiariaComponent implements OnInit {
-  @Input() resultadoIrradiacao: any
+  @Input() dadosIrradiacao: any;
   @Input() minimo: any;
   constructor() { }
 
